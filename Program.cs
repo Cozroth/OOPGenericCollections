@@ -78,7 +78,7 @@ namespace OOPGenericCollections
             Console.WriteLine("------------------------------");
             Console.WriteLine("Retrive Using Peek Method");
 
-            for (int i = 0; i < 2; i++) ;
+            for (int i = 0; i < 2; i++)
             {
                 Console.WriteLine(stack.Peek().ToString());
                 Console.WriteLine($"Items left in the Stack = {stack.Count}");
