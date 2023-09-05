@@ -90,7 +90,8 @@ namespace OOPGenericCollections
             // Assigning employeeNumber to 3, the employee we want to find
             employeeNumber = 3;
 
-
+            // Writing an empty new line to the console
+            Console.WriteLine();
 
             // Writing out to console
             // Using Stack.Contains for the logic where we look at our employee array at the index employeeNumber - 1 (since arrays start a 0 and we started

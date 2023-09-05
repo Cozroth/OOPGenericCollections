@@ -48,7 +48,7 @@ namespace OOPGenericCollections
             if (list.Count > 0 && list.Exists(employee => employee.Gender == findItem))
             {
                 var e = list.Find(employee => employee.Gender == findItem);
-                Console.WriteLine($"ID = {e.Id}, NAame = {e.Name}, Gender = {e.Gender}, Salary = {e.Salary}");
+                Console.WriteLine($"ID = {e.Id}, Name = {e.Name}, Gender = {e.Gender}, Salary = {e.Salary}");
 
             }
             else
@@ -76,7 +76,7 @@ namespace OOPGenericCollections
                 List<Employee> results = list.FindAll(e => e.Gender == findItem);
                 foreach (Employee employee in results)
                 {
-                    Console.WriteLine($"ID = {employee.Id}, NAame = {employee.Name}, Gender = {employee.Gender}, Salary = {employee.Salary}");
+                    Console.WriteLine($"ID = {employee.Id}, Name = {employee.Name}, Gender = {employee.Gender}, Salary = {employee.Salary}");
                 }
             }
             else
