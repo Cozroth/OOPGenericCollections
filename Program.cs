@@ -1,4 +1,5 @@
 ﻿// Tobias Skog - .NET23
+using ValidationUtility;
 namespace OOPGenericCollections
 {
     internal class Program
@@ -13,7 +14,7 @@ namespace OOPGenericCollections
             int employeeNumber, count;
 
             // Creating 5 new Employee objects with different Names, Genders, IDs, and Salarys
-            Employee Emp1 = new("Tobias", "Male", 52, 0);
+            Employee Emp1 = new("Tobias", "Male", 52, 25);
             Employee Emp2 = new("Victor", "Male", 51, 16000);
             Employee Emp3 = new("Peder", "Male", 61, 22000);
             Employee Emp4 = new("Åsa", "Female", 56, 22000);
@@ -32,7 +33,8 @@ namespace OOPGenericCollections
             // Using the sepperate class AddTo with its method AddObjectsToStack that takes an
             // an array of Employee objects and a Stack<Employee> that will add every object
             // in the array to the stack by looping thru them, does not return anything
-            LogicHandler.AddObjectsToStack(employees, stack);
+            //LogicHandler.AddObjectsToStack(employees, stack);
+            StackValidationHelper.AddObjectsToStack(employees, stack);
 
             // foreach loop to look at each sepperate employee "e" in the stack
             // By using string interpolation $"{e}" we implicitly call the ToString() method
@@ -41,10 +43,13 @@ namespace OOPGenericCollections
             // Writes all the current employee data out in the same format as the assignment
             // then adding a new line with `\n` and writing out the amount of items in the stack
             // by using the Stack.Count method to the console
-            foreach (Employee e in stack)
-            {
-                Console.WriteLine($"{e}\nItems left in the Stack = {stack.Count}");
-            }
+
+            StackValidationHelper.ItemsLeftInStack(employees, stack);
+
+            //foreach (Employee e in stack)
+            //{
+            //    Console.WriteLine($"{e}\nItems left in the Stack = {stack.Count}");
+            //}
 
             // Writing out a line to the console, following the design of the assignment
             Console.WriteLine("------------------------------");
@@ -54,35 +59,40 @@ namespace OOPGenericCollections
 
             // Setting the count variable to the current number of objects in the stack
 
-            count = stack.Count;
+            //count = stack.Count;
             // for loop where we loop count times (the current unchanged amount of objects in the stack)
-            // Writing out the top element using stack.Peek().ToString() where Peek() will only look at
-            // and not remove the top element
             // Removing the top element in the stack with stack.Pop()
             // Writing out to console the current amount of items left in the Stack after we removed the top element
 
             // The stack follows the Last-in, First-Out principle wich means that the most recently element added is the top element.
-            for (int i = 0; i < count; i++)
-            {
-                Console.WriteLine(stack.Peek().ToString());
-                stack.Pop();
-                Console.WriteLine($"Items left in the Stack = {stack.Count}");
-            }
+
+            StackValidationHelper.PopItemsInStack(stack, stack.Count);
+
+            //for (int i = 0; i < count; i++)
+            //{
+            //    Console.WriteLine(stack.Pop());
+            //    Console.WriteLine($"Items left in the Stack = {stack.Count}");
+            //}
 
             // Using the sepperate class AddTo with its method AddObjectsToStack that takes an
             // an array of Employee objects and a Stack<Employee> that will add every object
             // in the array to the stack by looping thru them, does not return anything
-            LogicHandler.AddObjectsToStack(employees, stack);
+
+            //LogicHandler.AddObjectsToStack(employees, stack);
+            StackValidationHelper.AddObjectsToStack(employees, stack);
 
             // Writing out a line to the console, following the design of the assignment
             Console.WriteLine("------------------------------");
             Console.WriteLine("Retrive Using Peek Method");
 
-            for (int i = 0; i < 2; i++)
-            {
-                Console.WriteLine(stack.Peek().ToString());
-                Console.WriteLine($"Items left in the Stack = {stack.Count}");
-            }
+            StackValidationHelper.PeekItemsInStack(stack, 2);
+
+            //for (int i = 0; i < 2; i++)
+            //{
+            //    Console.WriteLine(stack.Peek().ToString());
+            //    Console.WriteLine($"Items left in the Stack = {stack.Count}");
+            //}
+
             // Writing out a line to the console, following the design of the assignment
             Console.WriteLine("------------------------------");
 
@@ -98,14 +108,18 @@ namespace OOPGenericCollections
             // the count of Employees at 1)
             // IF the employee we are searching for exists = $"Emp{employeeNumber} is in stack"
             // ELSE = $"Emp{employeeNumber} is not in stack"
-            Console.WriteLine(stack.Contains(employees[employeeNumber - 1]) ? $"Emp{employeeNumber} is in stack" : $"Emp{employeeNumber} is not in stack");
+
+            StackValidationHelper.StackContains(employees, stack, employeeNumber);
+
+            //Console.WriteLine(stack.Contains(employees[employeeNumber - 1]) ? $"Emp{employeeNumber} is in stack" : $"Emp{employeeNumber} is not in stack");
 
             //---------------------------------------------------------------------------------------------------------------------------------------------------//
             // Del 2 - List
             // Using the sepperate class AddTo with its method AddObjectsToList that takes an
             // an array of Employee objects and a List<Employee> that will add every object
             // in the array to the List by looping thru them, does not return anything
-            LogicHandler.AddObjectsToList(employees, list);
+            //LogicHandler.AddObjectsToList(employees, list);
+            ListValidationHelper.AddObjectsToList(employees, list);
 
             // The employee we want to search for is the third created "Emp2"
             // Assigning employeeNumber to 2, the employee we want to find
@@ -116,7 +130,8 @@ namespace OOPGenericCollections
             // the count of Employees at 1)
             // IF the employee we are searching for exists = $"Employee{employeeNumber} object exists in the list"
             // ELSE = $"Employee{employeeNumber} object does not exist in the list"
-            Console.WriteLine(list.Contains(employees[employeeNumber - 1]) ? $"Employee{employeeNumber} object exists in the list" : $"Employee{employeeNumber} object does not exist in the list");
+            ListValidationHelper.ListContains(employees, list, employeeNumber);
+            //object does not exist in the list");
 
             // Writing an empty new line to the console
             Console.WriteLine();
@@ -126,6 +141,15 @@ namespace OOPGenericCollections
             // The method will write the result of the search to the console
             LogicHandler.FindFirstGenderInList(list, "Male");
 
+            //Func<Employee, string> getGender = obj => obj.Gender;  // FIX THIS
+            //Func<Employee, string> getEmployeeString = employee =>  // FIX THIS
+            //{
+            //    return $"ID = {employee.Id}, Name = {employee.Name}, Gender = {employee.Gender}, Salary = //{employee.Salary}";  // FIX THIS
+            //};
+
+            //TODO: GET THE CORRECT PRINT METHOD
+            //ListValidationHelper.FindFirstInList(list, getGender, "Male"); // FIX THIS
+
             // Writing an empty new line to the console
             Console.WriteLine();
 
@@ -133,6 +157,8 @@ namespace OOPGenericCollections
             // a List<Employee> and a string with the Gender we are searching for
             // The method will write the result of the search to the console
             LogicHandler.FindAllGenderInList(list, "Male");
+
+            //ListValidationHelper.FindAllInList(list, getGender, "Male"); // FIX THIS
         }
     }
 }
