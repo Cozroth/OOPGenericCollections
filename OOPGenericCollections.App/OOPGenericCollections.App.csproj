@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="ValidationUtility">
-      <HintPath>..\..\Libraries\Debug\net7.0\ValidationUtility.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\OOPGenericCollections.Validation\OOPGenericCollections.ValidationUtility.csproj" />
   </ItemGroup>
 
 </Project>
